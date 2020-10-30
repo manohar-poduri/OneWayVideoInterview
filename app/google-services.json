@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "304436272210",
+    "firebase_url": "https://one-way-interview-cb772.firebaseio.com",
+    "project_id": "one-way-interview-cb772",
+    "storage_bucket": "one-way-interview-cb772.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304436272210:android:c8d2d54ea3cd371f5c138b",
+        "android_client_info": {
+          "package_name": "com.example.onewayvideointerview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304436272210-hk7jvq6o569sgv169envpoejvf96na0q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.onewayvideointerview",
+            "certificate_hash": "09f05b973cac35dac6ac587b01a6158cc38e766b"
+          }
+        },
+        {
+          "client_id": "304436272210-vf41f2apufsvg2b9m0d09m4u5dav3crv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6mDu4sT5jm4lgohyYeWAdfI5IJ00wXQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304436272210-vf41f2apufsvg2b9m0d09m4u5dav3crv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
