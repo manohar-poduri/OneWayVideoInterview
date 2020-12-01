@@ -68,7 +68,7 @@ public class RatingEachQuestionPage extends AppCompatActivity {
                     System.out.println(uniqueId);
                     System.out.println(addData);
 
-                    moveFirebaseRecord(databaseReference.child("questions"),addData);
+//                    moveFirebaseRecord(databaseReference.child("questions"),addData);
 
                 }
             }
