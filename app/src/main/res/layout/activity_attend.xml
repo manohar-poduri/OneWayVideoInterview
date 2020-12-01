@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".AttendA">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/linearLayout2"
+>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,8 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="         "
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:id="@+id/UN"
         android:layout_toRightOf="@id/hi"
         />
@@ -31,18 +36,51 @@
         android:id="@+id/applyFor"
         android:layout_toRightOf="@id/UN"
         android:text="applying for"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"/>
+        android:layout_margin="10dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/applyFor"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:text=" "
         android:id="@+id/sub"
         />
 
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout2"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Instruction"
+            android:layout_margin="10dp"
+            android:id="@+id/instruction"/>
+
+        <CheckBox
+            android:id="@+id/checkboxInstruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instruction"
+            android:text="Please read the above instructions"
+            android:layout_centerHorizontal="true"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/next"
+            android:text="Next"
+            android:layout_below="@id/checkboxInstruction"
+            android:layout_centerHorizontal="true"
+            />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

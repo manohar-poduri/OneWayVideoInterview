@@ -2,9 +2,29 @@ package com.example.onewayvideointerview;
 
 public class UserDetails {
 
-    String username, email, phonenumber, subject;
+    String username, email, phonenumber, subject, VideoLink, questionsRating;
 
     public UserDetails() {
+    }
+
+    public UserDetails(String videoLink) {
+        VideoLink = videoLink;
+    }
+
+    public String getQuestionsRating() {
+        return questionsRating;
+    }
+
+    public void setQuestionsRating(String questionsRating) {
+        this.questionsRating = questionsRating;
+    }
+
+    public String getVideoLink() {
+        return VideoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        VideoLink = videoLink;
     }
 
     public String getUsername() {

@@ -3,8 +3,13 @@ package com.example.onewayvideointerview;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +26,8 @@ public class AttendA extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseDatabase firebaseDatabase;
     private String userId;
+    private CheckBox checkBox;
+    private Button next;
 
 
     @Override
@@ -30,6 +37,8 @@ public class AttendA extends AppCompatActivity {
 
         usernameView = findViewById(R.id.UN);
         subject = findViewById(R.id.sub);
+        checkBox = findViewById(R.id.checkboxInstruction);
+        next = findViewById(R.id.next);
 
         auth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -56,5 +65,35 @@ public class AttendA extends AppCompatActivity {
             }
         });
 
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (checkBox.isChecked()){
+                    Toast.makeText(AttendA.this, "You have read all the instructions", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AttendA.this,MainActivity.class));
+
+
+                } else {
+                    Toast.makeText(AttendA.this, "Please read all the instructions", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK)
+            /*Toast.makeText(getApplicationContext(), "back press",
+                    Toast.LENGTH_LONG).show();*/
+
+            return false;
+        // Disable back button..............
+        return false;
     }
 }

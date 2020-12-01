@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -119,5 +120,17 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK)
+            /*Toast.makeText(getApplicationContext(), "back press",
+                    Toast.LENGTH_LONG).show();*/
+
+            return false;
+        // Disable back button..............
+        return false;
     }
 }

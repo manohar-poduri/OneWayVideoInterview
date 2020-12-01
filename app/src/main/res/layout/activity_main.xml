@@ -60,9 +60,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="10dp"
-        android:text="Start"
-        android:onClick="startVideo"
+        android:text="Save"
+        android:onClick="SaveVideo"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextPage"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:text="Next"
+        android:onClick="nextPage"
+        android:layout_toLeftOf="@id/captureVideo"/>
 
 
 
