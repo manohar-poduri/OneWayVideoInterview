@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextInputLayout username,email1, password1, phone;
     private Button register;
+    private EditText expYears;
     private FirebaseAuth auth;
     private UserDetails userDetails;
     private DatabaseReference databaseReference;
@@ -55,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         register = findViewById(R.id.register);
         spinner = findViewById(R.id.chooseSpinner);
+        expYears = findViewById(R.id.expYears);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
                     userDetails.setEmail(email1.getEditText().getText().toString());
                     userDetails.setPhonenumber(phone.getEditText().getText().toString());
                     userDetails.setSubject(spinner.getSelectedItem().toString());
+                    userDetails.setExperience(expYears.getText().toString());
 
                     databaseReference.child("UserDetails").push().setValue(userDetails);
 
@@ -133,4 +137,5 @@ public class RegisterActivity extends AppCompatActivity {
         // Disable back button..............
         return false;
     }
+
 }

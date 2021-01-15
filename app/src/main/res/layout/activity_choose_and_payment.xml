@@ -8,36 +8,26 @@
     tools:context=".ChooseAndPaymentActivity">
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout1"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        >
+        android:id="@+id/experience"
+        android:text="Experience"
+        android:textColor="#000"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Experience"
-            android:id="@+id/exp"
-            android:textColor="#000"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:textSize="20sp"/>
 
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/experienceSeekbar"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:max="20"
-            />
-
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amount"
+        android:text="amount"
+        android:autoLink="web"
+        android:layout_below="@id/experience"
+        android:layout_centerHorizontal="true"
+        android:textSize="35sp"
+        android:layout_margin="5dp"/>
 
 
     <Button
@@ -45,7 +35,9 @@
         android:layout_height="wrap_content"
         android:text="Pay Amount"
         android:id="@+id/pay"
-        android:layout_below="@id/linearLayout1"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/amount"
         android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>

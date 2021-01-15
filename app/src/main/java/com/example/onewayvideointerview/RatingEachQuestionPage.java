@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RatingEachQuestionPage extends AppCompatActivity {
 
     private TextView questions1;
@@ -36,6 +39,7 @@ public class RatingEachQuestionPage extends AppCompatActivity {
     private FirebaseAuth auth;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,31 +49,21 @@ public class RatingEachQuestionPage extends AppCompatActivity {
         nextQuestion1 = findViewById(R.id.nextQuestionForRating);
         ratingBar = findViewById(R.id.ratingBarEachQuestion);
 
-        auth = FirebaseAuth.getInstance();
 
+        auth = FirebaseAuth.getInstance();
         userDetails = new UserDetails();
 
-        final DatabaseReference databaseReference   = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("UserDetails").child("Questions");
-
-        DatabaseReference databaseReference1 = databaseReference.child("UserDetails");
-        databaseReference1.orderByChild("email").equalTo(auth.getCurrentUser().getEmail()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("questions").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
 
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    HashMap user = (HashMap) snapshot.getValue();
 
-                    Log.d("findUid", String.valueOf(dataSnapshot.getKey()));
-
-                    String uniqueId = dataSnapshot.getKey();
-                    DataSnapshot addData = dataSnapshot.child("Questions");
-//                    Log.d("uniqueId", uniqueId);
-//                    Log.d("dataAdded", addData);
-                    System.out.println(uniqueId);
-                    System.out.println(addData);
-
-//                    moveFirebaseRecord(databaseReference.child("questions"),addData);
-
+                    DatabaseReference databaseReference = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("UserDetails").child("-MORKXUEJuAIbjUEOfnU");
+                    databaseReference.child("Questions").setValue(user);
+                    Log.d("userDetails", String.valueOf(user));
+                    FirebaseDatabase.getInstance().getReference().child("questions").setValue(user);
                 }
             }
 
@@ -78,9 +72,6 @@ public class RatingEachQuestionPage extends AppCompatActivity {
 
             }
         });
-
-
-//        moveFirebaseRecord(databaseReference.child("questions"),databaseReference2.child("Questions"));
 
 
 
@@ -110,20 +101,16 @@ public class RatingEachQuestionPage extends AppCompatActivity {
         nextQuestion1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 displayQuestion();
 
                 String s = String.valueOf(ratingBar.getRating());
                 Toast.makeText(RatingEachQuestionPage.this, s + " Star", Toast.LENGTH_SHORT).show();
                 ratingBar.setRating(0.0f);
 
-                /*DatabaseReference databaseReference1 = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("questions").orderByChild(String.valueOf(qid));
-                userDetails.setQuestionsRating(s);
-                databaseReference1.child("two").setValue(userDetails);*/
             }
 
         });
-
-
 
     }
 
@@ -145,7 +132,7 @@ public class RatingEachQuestionPage extends AppCompatActivity {
 
         questionToDisplay.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 Log.d("One", String.valueOf(dataSnapshot));
 
                 if (questionCount <= Totalquestions) {
@@ -169,60 +156,6 @@ public class RatingEachQuestionPage extends AppCompatActivity {
 
     }
 
-
-  /*  public void moveFirebaseRecord(DatabaseReference fromPath, final DatabaseReference toPath)
-    {
-        fromPath.addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                toPath.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener()
-                {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                        if (error != null)
-                        {
-                            System.out.println("Copy failed");
-                        }
-                        else
-                        {
-                            System.out.println("Success");
-                        }
-                    }
-
-
-                });
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                System.out.println("Copy failed");
-
-            }
-
-        });
-    }*/
-
-    public void moveFirebaseRecord(DatabaseReference fromPath, final DataSnapshot toPath)
-    {
-        fromPath.addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                toPath.child(String.valueOf(dataSnapshot.getValue())    );
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                System.out.println("Copy failed");
-
-            }
-
-        });
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK)
@@ -233,5 +166,6 @@ public class RatingEachQuestionPage extends AppCompatActivity {
         // Disable back button..............
         return false;
     }
+
 
 }

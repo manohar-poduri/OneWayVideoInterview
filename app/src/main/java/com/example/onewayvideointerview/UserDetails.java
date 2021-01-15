@@ -2,9 +2,26 @@ package com.example.onewayvideointerview;
 
 public class UserDetails {
 
-    String username, email, phonenumber, subject, VideoLink, questionsRating;
+    String username, email, phonenumber, subject, VideoLink, questionsRating, Experience, payment;
 
     public UserDetails() {
+    }
+
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getExperience() {
+        return Experience;
+    }
+
+    public void setExperience(String experience) {
+        Experience = experience;
     }
 
     public UserDetails(String videoLink) {
